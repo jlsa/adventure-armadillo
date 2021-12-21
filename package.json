@@ -1,0 +1,32 @@
+{
+  "name": "noise_generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "watch 'npm run build' src",
+    "build": "browserify src/main.js -o ./build/bundle.js",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["jest-extended/all"]
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "jest": "^27.4.5",
+    "jest-extended": "^1.2.0",
+    "jest-matchmedia-mock": "^1.1.0",
+    "watch": "^1.0.2"
+  }
+}
