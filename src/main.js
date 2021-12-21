@@ -8,5 +8,5 @@ new ThemeSwitcher()
 
 const rnd = new PM_PRNG()
 console.log(rnd.nextIntRange(1, 1000))
-// console.log(rnd.nextInt())
+console.log(rnd.nextInt())
 // app.start()
