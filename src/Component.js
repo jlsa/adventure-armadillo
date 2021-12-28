@@ -1,9 +1,13 @@
+const ComponentState = require('./enums/ComponentState')
+
 class Component {
   constructor () {
     if (new.target === Component) {
       throw new TypeError('Unable to constuct Component instances directly')
     }
     this.children = []
+    this.componentState = ComponentState.disabled
+    this.initialized = false
   }
 
   add (element) {
@@ -32,15 +36,53 @@ class Component {
   }
 
   update (deltaTime) {
-    this.children.forEach(child => {
-      child.update(deltaTime)
-    })
+    if (this.isActive()) {
+      this.children.forEach(child => {
+        child.update(deltaTime)
+      })
+    }
   }
 
   render (context, deltaTime) {
-    this.children.forEach(child => {
-      child.render(context, deltaTime)
-    })
+    if (this.isActive()) {
+      this.children.forEach(child => {
+        child.render(context, deltaTime)
+      })
+    }
+  }
+
+  /**
+   * @returns ComponentState
+   */
+  getState() {
+    return this.componentState;
+  }
+
+  /**
+   * @returns boolean
+   */
+  isActive() {
+    return this.getState() === ComponentState.active
+  }
+
+  deactivate() {
+    this.componentState = ComponentState.disabled
+  }
+
+  activate() {
+    this.componentState = ComponentState.active
+  }
+
+  init() {
+    this.initialized = true
+  }
+  
+  reset() {
+    this.initialized = false
+  }
+
+  getInitialized() {
+    return this.initialized
   }
 }
 

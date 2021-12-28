@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "dev": "watch 'npm run build' src",
-    "build": "browserify src/main.js -o ./build/bundle.js",
+    "build": "browserify src/main.js -o ./build/bundle.js && jest",
+    "release": "browserify src/main.js -o ./build/bundle.js",
     "test": "jest"
   },
   "jest": {
